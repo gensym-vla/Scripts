@@ -1,0 +1,19 @@
+#!/bin/sh
+##
+# This scripts downloads an album from jamendo in the ogg vorbis format (without the p2p pain)
+##
+if [ -z "$1" ]
+then
+    echo "Usage $0 [album id]"
+    exit 65
+fi
+# get the file name, pipe the error output to oblivion
+filename=`wget -O - "http://www.jamendo.com/en/download/album/$1/?output=contentonly" 2> /dev/null | perl -ne 'if(/Download\s+([\w\s\-]+)\s+\- Jamendo/){print $1;last;}'`
+#if filename is empty then the user submitted a false album id, exit
+if [ -z "$filename" ]
+then
+    echo "Something doesn't feel right... Check your album id please."
+    exit 65
+fi
+echo "Album Name: $filename"
+wget -c -O "${filename}.zip" "http://www.jamendo.com/get/album/id/album/archiverestricted/redirect/$1/?are=ogg3"
