@@ -4,11 +4,18 @@
 # This simple script iterates through the files in an image directory setting them as the wallpaper.
 # Depends on feh.
 ##
-if [ -d $1 ]
+if [ -z $1 ]
 then
     echo "Usage: $0 <wallpaper directory> [time]"
     exit 65
 fi
+
+if [ ! -d $1 ]
+then
+    echo "Supplied argument is not a file"
+    exit 65
+fi
+
 stime=$2
 if [ -z $stime ]
 then
