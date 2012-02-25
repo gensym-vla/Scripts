@@ -1,0 +1,26 @@
+#!/bin/sh
+#-*- sh -*-
+##
+# This simple script iterates through the files in an image directory setting them as the wallpaper.
+##
+if [ -z $1 ]
+then
+    echo "Usage: $0 <wallpaper directory> [time]"
+    exit 65
+fi
+stime=$2
+if [ -z $stime ]
+then
+    echo "No sleep time supplied, setting it to 120s"
+    stime=120
+fi
+
+while :
+do
+    for img in `ls $1`
+    do
+        `feh --bg-scale $1"/"$img`
+        echo "Set $img as wallpaper"
+        sleep $stime
+    done
+done
