@@ -4,7 +4,7 @@
 # This simple script iterates through the files in an image directory setting them as the wallpaper.
 # Depends on feh.
 ##
-if [ -z $1 ]
+if [ -d $1 ]
 then
     echo "Usage: $0 <wallpaper directory> [time]"
     exit 65
