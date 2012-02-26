@@ -1,7 +1,7 @@
 #!/bin/sh
 #-*- sh -*-
 ##
-# This simple script selects a random image from a specifieddirectory and sets it as the wallpaper.
+# This simple script selects a random image from a specified directory and sets it as the wallpaper in an infinite loop.
 # Depends on feh.
 ##
 if [ -z $1 ]
@@ -12,7 +12,7 @@ fi
 
 if [ ! -d $1 ]
 then
-    echo "Supplied argument is not a file"
+    echo "Supplied argument is not a directory."
     exit 65
 fi
 
