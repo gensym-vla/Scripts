@@ -1,7 +1,7 @@
 #!/bin/sh
 #-*- sh -*-
 ##
-# This simple script iterates through the files in an image directory setting them as the wallpaper.
+# This simple script selects a random image from a specifieddirectory and sets it as the wallpaper.
 # Depends on feh.
 ##
 if [ -z $1 ]
