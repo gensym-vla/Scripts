@@ -25,10 +25,8 @@ fi
 
 while :
 do
-    for img in `ls $1`
-    do
-        `feh --bg-scale $1"/"$img`
-        echo "Set $img as wallpaper"
-        sleep $stime
-    done
+    img=`ls $1 -1 | shuf -n 1`
+    feh --bg-scale $1"/"$img
+    echo "Set $img as  wallpaper"
+    sleep $stime
 done
