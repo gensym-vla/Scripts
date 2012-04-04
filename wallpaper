@@ -7,21 +7,11 @@
 
 # Find out whether another instance of this script is running, which is started by the same user
 
-instance=$(ps -ewwo uid,args | grep $(id -u $(whoami)) | grep $0 | grep sh)
-
-
-if [ ! -z "$instance" ]
+if [ -z "$1" ]
 then
-
-    echo "An instance of $0 is already running, exiting now."
-    exit 0
-    
-elif [ -z "$1" ]
-then
-
     echo "Usage: $0 <wallpaper directory> [time]"
     exit 65
-    
+ 
 elif [ ! -d "$1" ]
 then
 
