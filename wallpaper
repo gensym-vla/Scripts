@@ -5,7 +5,7 @@
 # Depends on feh.
 ##
 
-# Find out whether another instance of this script is running, which is started by the same me
+# Find out whether another instance of this script is running, which is started by the same user
 
 instance=$(ps -ewwo uid,args | grep $(id -u $(whoami)) | grep $0 | grep sh)
 echo $instance
