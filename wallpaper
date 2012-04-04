@@ -4,20 +4,31 @@
 # This simple script selects a random image from a specified directory and sets it as the wallpaper in an infinite loop.
 # Depends on feh.
 ##
-if [ -z $1 ]
+
+# Find out whether another instance of this script is running, which is started by the same me
+
+instance=$(ps -ewwo uid,args | grep $(id -u $(whoami)) | grep $0 | grep sh)
+echo $instance
+
+if [ ! -z "$instance" ]
+then
+    echo "An instance of $0 is already running, exiting now."
+    exit 0
+    
+elif [ -z "$1" ]
 then
     echo "Usage: $0 <wallpaper directory> [time]"
     exit 65
-fi
-
-if [ ! -d $1 ]
+    
+elif [ ! -d "$1" ]
 then
     echo "Supplied argument is not a directory."
     exit 65
+
 fi
 
 stime=$2
-if [ -z $stime ]
+if [ -z "$stime" ]
 then
     echo "No sleep time supplied, setting it to 120s"
     stime=120
