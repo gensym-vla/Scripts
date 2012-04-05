@@ -1,6 +1,10 @@
 #!/usr/bin/perl
+#
+# Depends on the browser lynx
+
 use strict;
 use warnings;
+
 my $location = 'Germany/Munich' unless $#ARGV != -1;
 my $url =  "http://www.weatherforecastmap.com/$location/rss.xml";
 
