@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+my $location = 'Germany/Munich' unless $#ARGV != -1;
+my $url =  "http://www.weatherforecastmap.com/$location/rss.xml";
+
+open LYNX, "lynx -source $url |" or die $!;
+$_ = "";
+$_ = <LYNX> until /<img src/;
+my $out = '';
+if(/<\/a><b>([^&]+)&nbsp;\s*(\d+)&deg;([CF])/) {
+    $out = $1." ".$2.$3."  ";
+}
+for (1..5) {
+    $_ = <LYNX>;
+    if(/<br>([^\]\n]+)/){
+        $out = $out.$1." ";
+        #$out =~ s{\n}{ , };
+    }
+}
+
+print $location." ".$out;
