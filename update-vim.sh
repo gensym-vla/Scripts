@@ -1,11 +1,12 @@
 #!/bin/sh
 # Author: Vedat Levi Alev
-# Description: Most of my vim plugins are cloned from git repos.
-# This script provides an easy way to update them, providing that you have
-# pathogen or a comparable plugin installed which allows plugins to have their
-# own hierarchies.
+# Most of my vim plugins are cloned from git repos. This script provides  
+# an easy way to update them, providing that pathogen or a comparable plugin
+# which allows plugins to have their own  file hierarchies is installed.
+#
 # If you supply a command line argument to the script, it will assume that
 # this is the directory you store your plugins in.
+
 dir=~/.vim/bundle
 if [ ! -z $1  ]
 then
